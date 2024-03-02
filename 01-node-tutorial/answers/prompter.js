@@ -34,6 +34,8 @@ let message = "Please guess a number between 1 and 50"
 const form = () => {
   return `
   <body>
+  <p>hello we are at week2 and today is cloudy and rainy in Boston</p>
+  <img src="https://www.farmersalmanac.com/wp-content/uploads/2020/11/Clouds-Predict-Local-Weather-i861387936-1184x630.jpg" height="100">
   <p>${message}</p>
   <form method="POST">
   <input type="number" name="guess" min="1" max="50"></input>
@@ -72,6 +74,11 @@ const server = http.createServer((req, res) => {
   } else {
     res.end(form());
   }
+});
+
+// adding event emitters
+server.on("request", (req) => {
+  console.log("event received: ", req.method, req.url);
 });
 
 server.listen(3000);
